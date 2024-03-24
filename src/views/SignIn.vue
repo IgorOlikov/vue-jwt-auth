@@ -1,5 +1,5 @@
 <template>
-  <h2>Sign Up</h2>
+  <h2>Sign In</h2>
   <form class="flex flex-column gap-3">
     <Message v-if="authStore.error" severity="warn">{{ authStore.error }}</Message>
     <div class="p-inputgroup flex-1">
@@ -16,8 +16,8 @@
     </div>
     <Loader v-if="authStore.loader"/>
     <div v-else class="flex flex-column gap-3">
-      <Button label="Signup" @click="signUp"/>
-      <span>Are you already registered? <router-link to="/signin">Sign In</router-link></span>
+      <Button label="Signin" @click="signIn"/>
+      <span>Are you not registered? <router-link to="/signup">Sign Up</router-link></span>
     </div>
   </form>
 </template>
@@ -37,8 +37,8 @@ const router = useRouter();
 const email = ref('');
 const password = ref('');
 
-const signUp = async () => {
-  await authStore.auth({email: email.value ,password: password.value}, 'signup')
+const signIn = async () => {
+  await authStore.auth({email: email.value ,password: password.value}, 'signin')
   await router.push('/cars')
 }
 
