@@ -1,9 +1,12 @@
-<script setup>
-import TheWelcome from '../components/TheWelcome.vue'
-</script>
-
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <h1>aaaaa</h1>
+
+  <Button label="Submit" />
+
+
 </template>
+
+<script setup>
+
+import Button from 'primevue/button';
+</script>
