@@ -31,6 +31,7 @@ export const useAuthStore
             ...payload,
             returnSecureToken: true,
           });
+
         userInfo.value = {
           token: response.data.idToken,
           email: response.data.email,
@@ -38,6 +39,14 @@ export const useAuthStore
           refreshToken: response.data.refreshToken,
           expiresIn: response.data.expiresIn
         }
+
+        localStorage.setItem('userTokens', JSON.stringify({
+          token: userInfo.value.token,
+          refreshToken: userInfo.value.refreshToken,
+          email: userInfo.value.email,
+          userId: userInfo.value.userId,
+          expiresIn: userInfo.value.expiresIn
+        }))
 
       } catch (err){
 
